@@ -9,10 +9,6 @@ export class Statistics extends Component {
     bad: 0,
   };
 
- /* constructor(props) {
-    super(props);
-  }*/
-
   render() {
     return (
       <StatisticsWrapper>
