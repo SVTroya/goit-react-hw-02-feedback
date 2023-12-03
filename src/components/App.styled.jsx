@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const FormWrapper = styled.section`
+  height: 556px;
   padding: 50px;
   display: flex;
   flex-direction: column;

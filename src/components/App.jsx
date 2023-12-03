@@ -27,11 +27,19 @@ export class App extends Component {
         <Section title={'Did you like our cafe? Please leave feedback.'} fontSize='50px'>
           <FeedbackOptions options={[GOOD, NEUTRAL, BAD]} onLeaveFeedback={this.onLeaveFeedback} />
         </Section>
-        <Section title={'Statistics'} fontSize='40px'>
-          <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()}
-                      positivePercentage={this.countPositiveFeedbackPercentage()} />
-          <Notification message='We realy wait for your feedback!' />
-        </Section>
+        {
+          this.countTotalFeedback()
+            ? (
+              <Section title={'Statistics'} fontSize='40px'>
+                <Statistics good={this.state.good}
+                            neutral={this.state.neutral}
+                            bad={this.state.bad}
+                            total={this.countTotalFeedback()}
+                            positivePercentage={this.countPositiveFeedbackPercentage()} />
+              </Section>
+            )
+            : <Notification message='We realy wait for your feedback!' />
+        }
       </FormWrapper>
     );
   }
