@@ -1,5 +1,6 @@
 import { LabelsBlock, StatisticsWrapper, ValuesBlock } from './Statistics.styled';
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Statistics extends Component {
 
@@ -8,6 +9,14 @@ export class Statistics extends Component {
     neutral: 0,
     bad: 0,
   };
+
+  static propTypes = {
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+    total: PropTypes.func,
+    positivePercentage: PropTypes.func,
+  }
 
   render() {
     return (

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 export class FeedbackOptions extends Component {
 
-  propTypes = {
+  static propTypes = {
     options: PropTypes.arrayOf(PropTypes.string),
     onLeaveFeedback: PropTypes.func,
   };
