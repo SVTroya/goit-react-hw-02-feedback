@@ -12,5 +12,5 @@ export function Section({ title, fontSize, children }) {
 
 Section.propTypes = {
   title: PropTypes.string,
-  fontSize: PropTypes.number,
+  fontSize: PropTypes.string,
 };

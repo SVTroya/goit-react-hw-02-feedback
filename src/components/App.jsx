@@ -13,19 +13,27 @@ export class App extends Component {
     bad: 0,
   };
 
-  onLeaveFeedback = (buttonType) => {
-    this.setState(state => ({ [buttonType]: state[buttonType] + 1 }));
+  onFeedbackClick = (target) => {
+    if (target.nodeName !== 'BUTTON') {
+      console.log(target.nodeName);
+      return;
+    }
+
+    target.blur();
+    this.setState(state => ({ [target.dataset.type]: state[target.dataset.type] + 1 }));
   };
 
   countTotalFeedback = () => (this.state.good + this.state.neutral + this.state.bad);
 
-  countPositiveFeedbackPercentage = () => (Math.round((this.state.good / (this.state.good + this.state.neutral + this.state.bad) * 100) || 0));
+  countPositiveFeedbackPercentage = () => (
+    Math.round((this.state.good / (this.state.good + this.state.neutral + this.state.bad) * 100) || 0)
+  );
 
   render() {
     return (
       <FormWrapper>
         <Section title={'Did you like our cafe? Please leave feedback.'} fontSize='50px'>
-          <FeedbackOptions options={[GOOD, NEUTRAL, BAD]} onLeaveFeedback={this.onLeaveFeedback} />
+          <FeedbackOptions options={[GOOD, NEUTRAL, BAD]} onLeaveFeedback={this.onFeedbackClick} />
         </Section>
         {
           this.countTotalFeedback()
@@ -34,8 +42,8 @@ export class App extends Component {
                 <Statistics good={this.state.good}
                             neutral={this.state.neutral}
                             bad={this.state.bad}
-                            total={this.countTotalFeedback()}
-                            positivePercentage={this.countPositiveFeedbackPercentage()} />
+                            total={this.countTotalFeedback}
+                            positivePercentage={this.countPositiveFeedbackPercentage} />
               </Section>
             )
             : <Notification message='We realy wait for your feedback!' />
