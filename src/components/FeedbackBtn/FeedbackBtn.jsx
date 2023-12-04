@@ -1,20 +1,17 @@
 import { BAD, GOOD, NEUTRAL } from '../../assets/FeedbackType';
-import { BsFire } from 'react-icons/bs';
-import { FaRegSmile } from 'react-icons/fa';
-import { LiaPooSolid } from 'react-icons/lia';
-import { Button } from './FeedbackBtn.styled';
+import { Button, IconBad, IconGood, IconNeutral } from './FeedbackBtn.styled';
 
-const iconsSet = {
+const buttonSet = {
   [GOOD]: {
-    icon: <BsFire color='#171717' size={30} style={{pointerEvents:'none'}}/>,
+    icon: <IconGood />,
     color: '#96E061',
   },
   [NEUTRAL]: {
-    icon: <FaRegSmile color='#171717' size={30} style={{pointerEvents:'none'}}/>,
+    icon: <IconNeutral />,
     color: '#fffc9d',
   },
   [BAD]: {
-    icon: <LiaPooSolid color='#171717' size={40} style={{pointerEvents:'none'}}/>,
+    icon: <IconBad />,
     color: '#F19389',
   },
 };
@@ -22,10 +19,13 @@ const iconsSet = {
 
 export function FeedbackBtn({ feedbackType }) {
   return (
-    <Button $color={iconsSet[feedbackType].color} type="button" color='#171717' size={30} aria-label={`${feedbackType} feedback`} data-type={feedbackType}>
-      {/*{`<${iconsSet[feedbackType].icon} color='#171717' size={30} />`}*/}
-      {iconsSet[feedbackType].icon}
+    <Button
+      $color={buttonSet[feedbackType].color}
+      type="button"
+      aria-label={`${feedbackType} feedback`}
+      data-type={feedbackType}
+    >
+      {buttonSet[feedbackType].icon}
     </Button>
   );
 }
-
